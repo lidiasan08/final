@@ -1,0 +1,15 @@
+Algoritmo del Programa
+
+1. Comienza el programa y muestra un mensaje de bienvenida.
+2. Explica brevemente cómo funciona.
+3. Inicia un bucle que permitirá hacer varias cotizaciones:
+   1. Pide al usuario que ingrese una propiedad.
+   2. Verifica que la entrada no esté vacía.
+   3. Pide al usuario que ingrese sus ingresos.
+   4. Asegúrate de que la entrada sea un número.
+   5. Calcula la cotización según las propiedades y los ingresos que ingresó:
+      - Aplica recargos según las reglas definidas.
+   6. Muestra el resultado de la cotización al usuario.
+   7. Pregunta si quiere hacer otra cotización o salir.
+   8. Si el usuario dice 'Salir', termina el programa.
+4. Finaliza el programa.

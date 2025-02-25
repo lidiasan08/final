@@ -1,0 +1,64 @@
+// Variables útiles
+var precio_base = 2000;
+
+// Valores de los recargos 
+var edad_18 = 0.1, edad_25 = 0.2, edad_50 = 0.3;
+var casado_18 = 0.1, casado_25 = 0.2, casado_50 = 0.3;
+var hijos_recargo = 0.2;
+var propiedad_recargo = 0.35; // 35% por propiedad
+var salario_recargo = 0.05;   // 5% del salario
+
+while (true) { // Bucle infinito hasta que el usuario ingrese "Salir"
+    // Mensajes de alerta para ingresar datos 
+    var nombre = prompt("Ingrese su nombre, o escriba 'Salir' para terminar:");
+    if (nombre.toUpperCase() === "SALIR") break; // Salir del bucle
+
+    var edad = parseInt(prompt("¿Cuántos años tiene? Ingrese solo números:"));
+    
+    var casado = prompt("¿Está casado/a actualmente? (Si/No)").toUpperCase();
+    var edad_conyuge = 0;
+    if (casado === "SI") {
+        edad_conyuge = parseInt(prompt("¿Qué edad tiene su esposo/a?"));
+    }
+
+    var hijos = prompt("¿Tiene hijos o hijas? (Si/No)").toUpperCase();
+    var cantidad_hijos = 0;
+    if (hijos === "SI") {
+        cantidad_hijos = parseInt(prompt("¿Cuántos hijos tiene?"));
+    }
+
+    var propiedades = parseInt(prompt("¿Cuántas propiedades posee?"));
+    var salario = parseFloat(prompt("Ingrese su salario mensual:"));
+
+    // Variables de recargo
+    var recargo = 0, recargo_total = 0;
+    
+    // Recargo por edad del asegurado
+    if (edad >= 18 && edad < 25) recargo_total += precio_base * edad_18;
+    else if (edad >= 25 && edad < 50) recargo_total += precio_base * edad_25;
+    else if (edad >= 50) recargo_total += precio_base * edad_50;
+
+    // Recargo por edad del cónyuge
+    if (casado === "SI") {
+        if (edad_conyuge >= 18 && edad_conyuge < 25) recargo_total += precio_base * casado_18;
+        else if (edad_conyuge >= 25 && edad_conyuge < 50) recargo_total += precio_base * casado_25;
+        else if (edad_conyuge >= 50) recargo_total += precio_base * casado_50;
+    }
+
+    // Recargo por cantidad de hijos
+    recargo_total += cantidad_hijos * (precio_base * hijos_recargo);
+
+    // Recargo por propiedades
+    recargo_total += propiedades * (precio_base * propiedad_recargo);
+
+    // Recargo por salario
+    recargo_total += salario * salario_recargo;
+
+    // Precio final
+    var precio_final = precio_base + recargo_total;
+
+    // Resultado
+    alert(`Para el asegurado ${nombre}:\nEl recargo total será de: Q${recargo_total.toFixed(2)}\nEl precio final será de: Q${precio_final.toFixed(2)}`);
+}
+
+alert("Gracias por usar el sistema de cotización.");
